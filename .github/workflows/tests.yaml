@@ -23,4 +23,6 @@ jobs:
     if: |
       (contains(github.ref, 'k8s') && always()) ||
       github.ref == '/refs/heads/develop' ||
-      github.ref == '/refs/heads/production'
+      github.ref == '/refs/heads/production' ||
+      github.ref == '/refs/heads/main' ||
+      startsWith(github.ref, '/ref/tags/')
