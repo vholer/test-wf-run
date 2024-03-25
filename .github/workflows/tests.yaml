@@ -18,9 +18,4 @@ jobs:
     needs: [tests]
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
-    if: ${{ ! contains('k8s', github.ref) }}
-
-
-
-
-
+    if: ${{ ! contains(github.ref, 'k8s') }}
