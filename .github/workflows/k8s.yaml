@@ -25,6 +25,7 @@ jobs:
 
       - name: Build ...
         run: |
+          git branch
           git log --pretty=format:"%h - %an, %ar : %s"
 
   tfc:
