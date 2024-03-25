@@ -1,9 +1,11 @@
 name: Build for K8s
 
 on:
+  # always run on branches which contain k8s
   push:
     branches:
       - '**k8s**'
+  # in all other cases, build is triggered by successful tests
   workflow_call:
 
 jobs:
@@ -11,7 +13,6 @@ jobs:
     name: K8s Build
     timeout-minutes: 15
     runs-on: ubuntu-22.04
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
