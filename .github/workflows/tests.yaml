@@ -16,5 +16,5 @@ jobs:
 
   k8s:
     needs: [tests]
-    uses: ./.github/workflows/k8s.yml
+    uses: ./.github/workflows/k8s.yaml
     secrets: inherit
