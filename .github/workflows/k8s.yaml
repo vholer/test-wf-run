@@ -25,7 +25,7 @@ jobs:
 
       - name: Build ...
         run: |
-          sleep 5
+          git log --pretty=format:"%h - %an, %ar : %s"
 
   tfc:
     name: TFC
