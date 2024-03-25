@@ -1,0 +1,39 @@
+name: Build for K8s
+
+on:
+  workflow_run:
+    workflows: ['Tests']
+    types: [completed]
+    branches:
+      - main
+      - develop
+      - production
+      - in-720-k8s
+  push:
+    branches:
+      - '**k8s**'
+
+jobs:
+  build:
+    name: K8s Build
+    timeout-minutes: 15
+    runs-on: ubuntu-22.04
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ...
+        run: |
+          sleep 30
+
+  tfc:
+    name: TFC
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: TFC Apply
+        run: |
+          sleep 1
