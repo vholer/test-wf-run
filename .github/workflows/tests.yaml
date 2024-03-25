@@ -14,3 +14,7 @@ jobs:
         run: |
           sleep 30
 
+  k8s:
+    needs: [tests]
+    uses: ./.github/workflows/k8s.yml
+    secrets: inherit

@@ -1,17 +1,10 @@
 name: Build for K8s
 
 on:
-  workflow_run:
-    workflows: ['Tests']
-    types: [completed]
-    branches:
-      - main
-      - develop
-      - production
-      - in-720-k8s
   push:
     branches:
       - '**k8s**'
+  workflow_call:
 
 jobs:
   build:
@@ -39,6 +32,3 @@ jobs:
       - name: TFC Apply
         run: |
           sleep 1
-
-
-
