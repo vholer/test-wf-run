@@ -15,6 +15,11 @@ jobs:
           sleep 30
 
   k8s:
+    uses: ./.github/workflows/k8s.yaml
+    secrets: inherit
+    if: ${{ contains(github.ref, 'k8s') }}
+
+  k8s-with-tests:
     needs: [tests]
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
