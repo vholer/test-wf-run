@@ -1,6 +1,7 @@
 name: Tests
 
-on: [push]
+on:
+  push:
 
 jobs:
   tests:
@@ -19,5 +20,7 @@ jobs:
     needs: [tests]
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
-    if: ${{ contains(github.ref, 'k8s') && always() }}
-
+    if: |
+      (contains(github.ref, 'k8s') && always()) ||
+      github.ref == '/refs/heads/develop' ||
+      github.ref == '/refs/heads/production'
