@@ -22,8 +22,10 @@ jobs:
     needs: [tests]
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
+    # Run k8s build always for branches which contain substring 'k8s'
+    # no matter how previous tests finish. Otherwise, run k8s build
+    # only for selected branches and only if their tests pass.
     if: |
-      # asdfasdf
       (
         !cancelled() &&
         startsWith(github.ref, 'refs/heads/') &&
