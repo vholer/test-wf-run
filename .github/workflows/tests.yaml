@@ -21,7 +21,7 @@ jobs:
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
     if: |
-      (contains(github.ref, 'k8s') && always()) ||
+      (always() && startsWith(github.ref, '/ref/heads/') && contains(github.ref, 'k8s')) ||
       github.ref == '/refs/heads/develop' ||
       github.ref == '/refs/heads/production' ||
       github.ref == '/refs/heads/main' ||
