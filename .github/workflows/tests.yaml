@@ -13,7 +13,7 @@ jobs:
 
       - name: Tests ...
         run: |
-          sleep 10
+          #sleep 10
           #exit $(( RANDOM % 2))
           exit 1
 
@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/k8s.yaml
     secrets: inherit
     if: |
-      (startsWith(github.ref, 'refs/heads/') && contains(github.ref, 'k8s')) ||
+      (always() && startsWith(github.ref, 'refs/heads/') && contains(github.ref, 'k8s')) ||
       github.ref == 'refs/heads/develop' ||
       github.ref == 'refs/heads/production' ||
       github.ref == 'refs/heads/main' ||
