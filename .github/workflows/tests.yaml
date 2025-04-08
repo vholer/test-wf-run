@@ -8,13 +8,25 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: sudo -n iptables-save
+      - run: |
+          sudo -n apt-get update
+          sudo -n apt-get install -fy lxc-utils lxc-templates
+      - run: sudo -n iptables-save
 
   u2204:
     runs-on: ubuntu-22.04
     steps:
       - run: sudo -n iptables-save
+      - run: |
+          sudo -n apt-get update
+          sudo -n apt-get install -fy lxc-utils lxc-templates
+      - run: sudo -n iptables-save
 
   u2404:
     runs-on: ubuntu-24.04
     steps:
+      - run: sudo -n iptables-save
+      - run: |
+          sudo -n apt-get update
+          sudo -n apt-get install -fy lxc-utils lxc-templates
       - run: sudo -n iptables-save
